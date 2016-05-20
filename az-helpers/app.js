@@ -1,3 +1,3 @@
 angular
-  .module('az.helpers', [])
+  .module('az.helpers', ['az.debug'])
 ;
