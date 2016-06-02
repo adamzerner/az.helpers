@@ -6,9 +6,13 @@
     .controller('AzDebugCtrl', AzDebugCtrl)
   ;
 
-  function AzDebugCtrl() {
+  function AzDebugCtrl(AzDebugModeService) {
     var vm = this;
+
     window.azDebug = {};
+
+    vm.debugModeContainer = AzDebugModeService.debugModeContainer;
+
     vm.log = function () {
       console.log(vm.name);
       console.log(vm.content);
