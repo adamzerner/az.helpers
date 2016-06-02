@@ -1,16 +1,23 @@
-angular
-  .module('az.debug', [])
-  .directive('azDebug', azDebug)
-;
+(function () {
+  'use strict';
 
-function azDebug() {
-  return {
-    restrict: 'E',
-    templateUrl: 'az-helpers/debug/debug.directive.html',
-    scope: {},
-    bindToController: {
+  angular
+    .module('az.debug', [])
+    .directive('azDebug', azDebug)
+  ;
 
-    },
-    controller: 'AzDebugCtrl as azDebugVm'
-  };
-}
+  function azDebug() {
+    return {
+      restrict: 'E',
+      templateUrl: 'az-helpers/debug/debug.directive.html',
+      scope: {},
+      bindToController: {
+        name: '@',
+        content: '=',
+        showPre: '@',
+      },
+      controller: 'AzDebugCtrl as azDebugVm',
+    };
+  }
+
+})();

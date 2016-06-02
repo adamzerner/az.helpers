@@ -1,1 +1,13 @@
-<p>debug directive</p>
+<div id="az-debug-template">
+  <button
+    ng-if="!azDebugVm.showPre"
+    ng-click="azDebugVm.log()"
+  >
+    Log {{ azDebugVm.name }}
+  </button>
+
+  <div ng-if="azDebugVm.showPre">
+    <code ng-click="azDebugVm.log()">{{ azDebugVm.name }}</code>
+    <pre ng-click="azDebugVm.log()">{{ azDebugVm.content | json }}</pre>
+  </div>
+</div>
