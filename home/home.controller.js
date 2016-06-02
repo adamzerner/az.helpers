@@ -1,9 +1,16 @@
-angular
-  .module('demo')
-  .controller('HomeCtrl', AzHomeCtrl)
-;
+(function () {
+  'use strict';
 
-function AzHomeCtrl() {
-  var vm = this;
-  vm.foo = 'bar';
-}
+  angular
+    .module('demo')
+    .controller('HomeCtrl', AzHomeCtrl)
+  ;
+
+  function AzHomeCtrl() {
+    var vm = this;
+    vm.foo = {
+      a: 'one',
+      b: 'two',
+    };
+  }
+})();
