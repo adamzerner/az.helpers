@@ -1,3 +1,3 @@
 angular
-  .module('az.helpers', ['az.debug', 'az.collapsible'])
+  .module('az.helpers', ['az.debug', 'az.collapsible', 'az.dialogs'])
 ;
