@@ -1,0 +1,20 @@
+<nav ng-if="vm.levels === '1'">
+  <ul>
+    <li ng-repeat="link in vm.links" ng-class="{ 'active': vm.isLinkActive(link, 'primary') }">
+      <az-nav-link link="link"></az-nav-link>
+    </li>
+  </ul>
+</nav>
+
+<nav ng-if="vm.levels === '2'">
+  <ul>
+    <li ng-repeat="primaryLink in vm.primaryLinks" ng-class="{ 'active': vm.isLinkActive(primaryLink, 'primary') }">
+      <az-nav-link link="primaryLink"></az-nav-link>
+    </li>
+  </ul>
+  <ul>
+    <li ng-repeat="secondaryLink in vm.secondaryLinks" ng-class="{ 'active': vm.isLinkActive(secondaryLink, 'secondary') }">
+      <az-nav-link link="secondaryLink"></az-nav-link>
+    </li>
+  </ul>
+</nav>
