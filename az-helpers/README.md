@@ -15,6 +15,10 @@ To use:
 The +/- has a class of `az-collapsible` on it. You'll probably want to use that class to position and style the element.
 
 ### Debug
+Displays a button that you could click to `console.log` data that you're interested in.
+
+In addition to `console.logging`, it will also assign `window.azDebug[vm.name] = vm.content` so that you could inspect the data more easily.
+
 To use:
 ```
 <az-debug name="users" content="vm.users"></az-debug>
@@ -187,3 +191,17 @@ This directive just sets up the markup. You'll have to style it with CSS. Feel f
 
 #### Active
 `AzActiveNavService` keeps track of the primary and/or secondary nav that is active. The directive is data-bound to the service, so set `AzActiveNavService.activeNavs.primary` or `AzActiveNavService.activeNavs.secondary`. The place to set it is probably in the run block when the route changes (code will be different depending on whether you're using UI Router or ngRoute).
+
+### Alerts
+Adding a single alert:
+```
+AzAlertService.addAlert(text, type);
+```
+`type` is the class that gets added.
+
+If you call `.addAlert` with an alert that already is visible, there won't be duplicate alerts, and you will see a `console.info` letting you know about the unsuccessful attempt to add the alert.
+
+Adding multiple alerts:
+```
+AzAlertService.addAlerts(alerts);
+```
