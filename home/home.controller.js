@@ -6,28 +6,37 @@
     .controller('HomeCtrl', AzHomeCtrl)
   ;
 
-  function AzHomeCtrl(AzActiveNavService) {
+  function AzHomeCtrl(AzActiveNavItemsService) {
     var vm = this;
-    vm.activeNavs = AzActiveNavService.activeNavs;
+    vm.activeNavItems = AzActiveNavItemsService.activeNavItems;
 
-    vm.links = [
+    vm.primaryNavItems = [
       {
+        brand: true,
         text: 'one',
         href: 'one.html',
       }, {
         text: 'two',
-        state: 'two',
       }, {
-        icon: 'icon.png',
+        text: 'icon.png',
         state: 'three',
       }, {
         text: 'four',
-        icon: 'four.png',
         state: 'four',
       },
     ];
 
-    vm.secondaryLinksHash = {
+    vm.primaryNavItems.right = [
+      {
+        text: 'right',
+        href: 'right.html',
+      }, {
+        text: 'right 2',
+        href: 'right2.html',
+      },
+    ];
+
+    vm.secondaryNavItemsHash = {
       'one.html': [
         {
           text: '1a',

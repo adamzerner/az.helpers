@@ -1,20 +1,101 @@
-<nav ng-if="vm.levels === '1'">
-  <ul>
-    <li ng-repeat="link in vm.links" ng-class="{ 'active': vm.isLinkActive(link, 'primary') }">
-      <az-nav-link link="link"></az-nav-link>
-    </li>
-  </ul>
+<nav
+  class="az-navbar primary-nav"
+  ng-class="{ navbar: vm.bootstrap, 'navbar-default': vm.bootstrap, 'navbar-fixed-top': vm.fixed }"
+>
+  <div ng-class="{ container: vm.bootstrap }">
+    <ul ng-class="{ nav: vm.bootstrap, 'navbar-nav': vm.bootstrap }">
+      <li
+        ng-repeat="primaryNavItem in vm.primaryNavItems"
+        ng-class="{
+          'active': vm.isLinkActive(primaryNavItem, 'primary') && vm.levels === '1',
+          'active-primary': vm.isLinkActive(primaryNavItem, 'primary') && vm.levels === '2'
+        }"
+      >
+        <a ng-if="primaryNavItem.href" ng-href="{{ primaryNavItem.href }}" ng-class="{ 'navbar-brand': primaryNavItem.brand }">
+          <img ng-if="primaryNavItem.icon" ng-src="{{ primaryNavItem.icon }}">
+          <span ng-if="primaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </a>
+
+        <a ng-if="primaryNavItem.state" ui-sref="{{ primaryNavItem.state }}" ng-class="{ 'navbar-brand': primaryNavItem.brand }">
+          <img ng-if="primaryNavItem.icon" ng-src="{{ primaryNavItem.icon }}">
+          <span ng-if="primaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </a>
+
+        <p ng-if="!primaryNavItem.href && !primaryNavItem.state" class="navbar-text">
+          <img ng-if="primaryNavItem.icon" ng-src="{{ primaryNavItem.icon }}">
+          <span ng-if="primaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </p>
+      </li>
+    </ul>
+    <ul ng-if="vm.primaryNavItems.right" class="navbar-right" ng-class="{ nav: vm.bootstrap, 'navbar-nav': vm.bootstrap }">
+      <li
+        ng-repeat="primaryNavItem in vm.primaryNavItems.right"
+        ng-class="{
+          'active': vm.isLinkActive(primaryNavItem, 'primary') && vm.levels === '1',
+          'active-primary': vm.isLinkActive(primaryNavItem, 'primary') && vm.levels === '2'
+        }"
+      >
+        <a ng-if="primaryNavItem.href" ng-href="{{ primaryNavItem.href }}" ng-class="{ 'navbar-brand': primaryNavItem.brand }">
+          <img ng-if="primaryNavItem.icon" ng-src="{{ primaryNavItem.icon }}">
+          <span ng-if="primaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </a>
+
+        <a ng-if="primaryNavItem.state" ui-sref="{{ primaryNavItem.state }}" ng-class="{ 'navbar-brand': primaryNavItem.brand }">
+          <img ng-if="primaryNavItem.icon" ng-src="{{ primaryNavItem.icon }}">
+          <span ng-if="primaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </a>
+
+        <p ng-if="!primaryNavItem.href && !primaryNavItem.state" class="navbar-text">
+          <img ng-if="primaryNavItem.icon" ng-src="{{ primaryNavItem.icon }}">
+          <span ng-if="primaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </p>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-<nav ng-if="vm.levels === '2'">
-  <ul>
-    <li ng-repeat="primaryLink in vm.primaryLinks" ng-class="{ 'active': vm.isLinkActive(primaryLink, 'primary') }">
-      <az-nav-link link="primaryLink"></az-nav-link>
-    </li>
-  </ul>
-  <ul>
-    <li ng-repeat="secondaryLink in vm.secondaryLinks" ng-class="{ 'active': vm.isLinkActive(secondaryLink, 'secondary') }">
-      <az-nav-link link="secondaryLink"></az-nav-link>
-    </li>
-  </ul>
+<nav
+  ng-if="vm.levels === '2'"
+  class="az-navbar secondary-nav"
+  ng-class="{ navbar: vm.bootstrap, 'navbar-default': vm.bootstrap, 'navbar-fixed-top': vm.fixed }"
+>
+  <div ng-class="{ container: vm.bootstrap }">
+    <ul ng-class="{ nav: vm.bootstrap, 'navbar-nav': vm.bootstrap }">
+      <li ng-repeat="secondaryNavItem in vm.secondaryNavItems" ng-class="{ 'active': vm.isLinkActive(secondaryNavItem, 'secondary') }">
+        <a ng-if="secondaryNavItem.href" ng-href="{{ secondaryNavItem.href }}">
+          <img ng-if="secondaryNavItem.icon" ng-src="{{ secondaryNavItem.icon }}">
+          <span ng-if="secondaryNavItem.text">{{ secondaryNavItem.text }}</span>
+        </a>
+
+        <a ng-if="secondaryNavItem.state" ui-sref="{{ secondaryNavItem.state }}">
+          <img ng-if="secondaryNavItem.icon" ng-src="{{ secondaryNavItem.icon }}">
+          <span ng-if="secondaryNavItem.text">{{ secondaryNavItem.text }}</span>
+        </a>
+
+        <p ng-if="!secondaryNavItem.href && !secondaryNavItem.state" class="navbar-text">
+          <img ng-if="secondaryNavItem.icon" ng-src="{{ secondaryNavItem.icon }}">
+          <span ng-if="secondaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </p>
+      </li>
+    </ul>
+
+    <ul ng-if="vm.secondaryNavItems.right" class="navbar-right" ng-class="{ nav: vm.bootstrap, 'navbar-nav': vm.bootstrap }">
+      <li ng-repeat="secondaryNavItem in vm.secondaryNavItems.right" ng-class="{ 'active': vm.isLinkActive(secondaryNavItem, 'secondary') }">
+        <a ng-if="secondaryNavItem.href" ng-href="{{ secondaryNavItem.href }}">
+          <img ng-if="secondaryNavItem.icon" ng-src="{{ secondaryNavItem.icon }}">
+          <span ng-if="secondaryNavItem.text">{{ secondaryNavItem.text }}</span>
+        </a>
+
+        <a ng-if="secondaryNavItem.state" ui-sref="{{ secondaryNavItem.state }}">
+          <img ng-if="secondaryNavItem.icon" ng-src="{{ secondaryNavItem.icon }}">
+          <span ng-if="secondaryNavItem.text">{{ secondaryNavItem.text }}</span>
+        </a>
+
+        <p ng-if="!secondaryNavItem.href && !secondaryNavItem.state" class="navbar-text">
+          <img ng-if="secondaryNavItem.icon" ng-src="{{ secondaryNavItem.icon }}">
+          <span ng-if="secondaryNavItem.text">{{ primaryNavItem.text }}</span>
+        </p>
+      </li>
+    </ul>
+  </div>
 </nav>

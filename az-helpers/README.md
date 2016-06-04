@@ -92,11 +92,14 @@ AzDialogService
 #### Single level navbar example:
 View:
 ```
-<az-navbar links="vm.links" levels="1"></az-navbar>
+<az-navbar
+  primary-nav-items="vm.primaryNavItems"
+  levels="1"
+></az-navbar>
 ```
 Controller:
 ```
-vm.links = [
+vm.primaryNavItems = [
   {
     text: 'one',
     href: 'one.html',
@@ -118,11 +121,15 @@ vm.links = [
 #### Two level navbar example:
 View:
 ```
-<az-navbar primary-links="vm.primaryLinks" secondary-links-hash="vm.secondaryLinksHash" levels="2"></az-navbar>
+<az-navbar
+  primary-nav-items="vm.primaryNavItems"
+  secondary-nav-items-hash="vm.secondaryNavItemsHash"
+  levels="2"
+></az-navbar>
 ```
 Controller:
 ```
-vm.links = [
+vm.primaryNavItems = [
   {
     text: 'one',
     href: 'one.html',
@@ -139,7 +146,7 @@ vm.links = [
   },
 ];
 
-vm.secondaryLinksHash = {
+vm.secondaryNavItemsHash = {
   'one.html': [
     {
       text: '1a',
@@ -181,16 +188,113 @@ vm.secondaryLinksHash = {
   ],
 };
 ```
-#### Link
-- An object
-- Should have `href` or `state` set (the latter if you're using UI Router).
-- Should have at least one of the following set: `text`, `icon`.
+#### href vs. state
+##### href
+```
+{
+  text: 'test',
+  href: 'link.html',
+}
+```
+Leads to:
+```
+<a href="link.html">test</a>
+```
+
+##### state
+```
+{
+  text: 'test',
+  state: 'foo',
+}
+```
+Leads to:
+```
+<a ui-sref="foo">test</a>
+```
 
 #### CSS
-This directive just sets up the markup. You'll have to style it with CSS. Feel free to mess with the markup. Or to add classes to support a framework, like bootstrap.
+This directive just sets up the markup. You'll have to style it with CSS. Feel free to mess with the markup.
+
+#### Bootstrap
+To make this a bootstrap navbar, pass `bootstrap="true"` to the directive and make sure you have bootstrap installed.
+```
+<az-navbar
+  primary-nav-items="vm.primaryNavItems"
+  levels="1"
+  bootstrap="true"
+></az-navbar>
+```
+Or if you want a two-leveled bootstrap navbar:
+```
+<az-navbar
+  primary-nav-items="vm.primaryNavItems"
+  secondary-nav-items-hash="vm.secondaryNavItemsHash"
+  levels="2"
+  bootstrap="true"
+></az-navbar>
+```
+
+Here are some things that work out of the box when you're using bootstrap. If you're not using bootstrap, it'll still add the appropriate classes, but you'll have to apply your own styling to the classes.
+
+##### Fixed
+To fix the navbar to the top of the screen (so it stays still while you scroll), pass `fixed="true"` to the directive.
+```
+<az-navbar
+  primary-nav-items="vm.primaryNavItems
+  levels="1"
+  bootstrap="true"
+  fixed="true"
+></az-navbar>
+```
+Applies a class of `navbar-fixed-top` to the `<nav>`.
+
+Fixed works for both one and two-leveled navbars.
+
+[Bootstrap docs for fixed](http://getbootstrap.com/components/#navbar-fixed-top)
+
+##### Brand
+```
+{
+  brand: true,
+  text: 'one',
+  href: 'one.html',
+}
+```
+Makes it bigger and more prominent.
+
+Applies a class of `navbar-brand` to the appropriate `<li>`.
+
+[Bootstrap docs for brand](http://getbootstrap.com/components/#navbar-brand-image)
+
+##### Plain text (no link)
+```
+{
+  text: 'Signed in',
+}
+```
+[Bootstrap docs for text](http://getbootstrap.com/components/#navbar-text)
+
+##### Right-aligned
+```
+vm.primaryNavItems = [ ... ];
+vm.primaryNavItems.right = [
+  {
+    text: 'right',
+    href: 'right.html',
+  }, {
+    text: 'right 2',
+    href: 'right2.html',
+  },
+];
+```
+
+[Bootstrap docs for right alignment](http://getbootstrap.com/components/#navbar-component-alignment)
 
 #### Active
-`AzActiveNavService` keeps track of the primary and/or secondary nav that is active. The directive is data-bound to the service, so set `AzActiveNavService.activeNavs.primary` or `AzActiveNavService.activeNavs.secondary`. The place to set it is probably in the run block when the route changes (code will be different depending on whether you're using UI Router or ngRoute).
+`AzActiveNavService` keeps track of the primary and/or secondary nav that is active. The directive is data-bound to the service, so set `AzActiveNavService.activeNavs.primary` or `AzActiveNavService.activeNavs.secondary`.
+
+The place to set it is probably in the run block when the route changes (code will be different depending on whether you're using UI Router or ngRoute).
 
 ### Alerts
 Adding a single alert:

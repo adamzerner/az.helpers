@@ -3,11 +3,11 @@
 
   angular
     .module('az.navbar')
-    .service('AzActiveNavService', AzActiveNavService)
+    .service('AzActiveNavItemsService', AzActiveNavItemsService)
   ;
 
-  function AzActiveNavService() {
-    this.activeNavs = {
+  function AzActiveNavItemsService() {
+    this.activeNavItems = {
       primary: null,
       secondary: null,
     };
