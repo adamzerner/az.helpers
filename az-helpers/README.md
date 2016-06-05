@@ -297,7 +297,7 @@ vm.primaryNavItems.right = [
 #### Active
 `AzActiveNavService` keeps track of the primary and/or secondary nav that is active. The directive is data-bound to the service, so set `AzActiveNavService.activeNavs.primary` or `AzActiveNavService.activeNavs.secondary`.
 
-The place to set it is probably in the run block when the route changes (code will be different depending on whether you're using UI Router or ngRoute).
+The place to set it is probably in the run block when the route changes (code will be different depending on whether you're using UI Router or ngRoute). Be sure to handle the situation where the user refreshes the page.
 
 ### Alerts
 Adding a single alert:
