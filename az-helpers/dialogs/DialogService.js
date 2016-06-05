@@ -54,9 +54,7 @@
           }
         };
       } else if (options.reminderType === 'alertMessage') {
-        debugger;
         callback = function () {
-          debugger;
           return AzAlertService.addAlert(options.text, options.type);
         };
       }
