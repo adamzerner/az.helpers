@@ -2,11 +2,11 @@
   'use strict';
 
   angular
-    .module('az.dialogs', ['ngDialog'])
+    .module('az.dialogs', ['ngDialog', 'az.alerts'])
     .service('AzDialogService', AzDialogService)
   ;
 
-  function AzDialogService(ngDialog, $timeout) {
+  function AzDialogService(ngDialog, $timeout, AzAlertService) {
     var self = this;
 
     self.dialog = function (options) {
@@ -45,13 +45,19 @@
             body: options.body,
           });
         };
-      } else if (options.reminderType === 'alert') {
+      } else if (options.reminderType === 'jsAlert') {
         callback = function () {
           if (options.title) {
             alert(options.title + '\n\n' + options.body);
           } else if (!options.title) {
             alert(options.body);
           }
+        };
+      } else if (options.reminderType === 'alertMessage') {
+        debugger;
+        callback = function () {
+          debugger;
+          return AzAlertService.addAlert(options.text, options.type);
         };
       }
 

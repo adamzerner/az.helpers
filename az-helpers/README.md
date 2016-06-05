@@ -29,6 +29,7 @@ Or if you want a `<pre>` instead of a `<button>`:
 ```
 
 ### DialogService
+Requires `az.alerts`.
 
 #### `.dialog`
 ```
@@ -86,7 +87,9 @@ AzDialogService
   })
 ;
 ```
-`reminderType`s: `dialog`, `confirm`, `alert`
+`reminderType`s: `dialog`, `confirm`, `jsAlert`, `alertMessage`
+
+Make sure you have `<az-alerts></az-alerts>` when `reminderType` is `alertMessage`, otherwise the alert message won't appear.
 
 ### Navbar
 #### Single level navbar example:
@@ -303,9 +306,10 @@ AzAlertService.addAlert(text, type);
 ```
 `type` is the class that gets added.
 
-If you call `.addAlert` with an alert that already is visible, there won't be duplicate alerts, and you will see a `console.info` letting you know about the unsuccessful attempt to add the alert.
-
 Adding multiple alerts:
 ```
 AzAlertService.addAlerts(alerts);
 ```
+
+#### No duplicate alerts
+If you call `.addAlert` with an alert that already is visible, there won't be duplicate alerts, and you will see a `console.info` letting you know about the unsuccessful attempt to add the alert.
