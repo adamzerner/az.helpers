@@ -28,6 +28,11 @@ Or if you want a `<pre>` instead of a `<button>`:
 <az-debug name="users" content="vm.users" show-pre="true"></az-debug>
 ```
 
+#### Visibility
+`azDebug` is only visible when `azDebugVm.debugModeContainer.debugMode` is true. You can use `<az-debug-toggle></az-debug-toggle>` to toggle that property, and thus `azDebug`'s visibility. Alternatively, if you want direct control, you can set `AzDebugModeService.debugModeContainer.debugMode`.
+
+Note: `azDebug` uses `ngShow`, not `ngIf`. This means that even if it's not visible, the DOM element exists, it just has `display: none;`. So if you're doing tech support for someone who isn't authorized to toggle debug mode, you can still use the dev tools to set `display: block;` and see the debug info.
+
 ### DialogService
 Requires `az.alerts`.
 
