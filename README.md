@@ -1,8 +1,15 @@
 # AZ Helpers
 
-## Modules
+1. [Collapsible](https://github.com/adamzerner/az.helpers#collapsible)
+2. [Debug](https://github.com/adamzerner/az.helpers#debug)
+3. [DialogService](https://github.com/adamzerner/az.helpers#dialogservice)
+4. [Navbar](https://github.com/adamzerner/az.helpers#navbar)
+5. [Alerts](https://github.com/adamzerner/az.helpers#alerts)
+6. [Authorization](https://github.com/adamzerner/az.helpers#authorization)
+7. [Generic HTTP Handling](https://github.com/adamzerner/az.helpers#generic-http-handling)
+8. [Pagination](https://github.com/adamzerner/az.helpers#pagination)
 
-### Collapsible
+## Collapsible
 To use:
 ```
 <ol az-collapsible>
@@ -14,7 +21,7 @@ To use:
 
 The +/- has a class of `az-collapsible` on it. You'll probably want to use that class to position and style the element.
 
-### Debug
+## Debug
 Displays a button that you could click to `console.log` data that you're interested in.
 
 In addition to `console.logging`, it will also assign `window.azDebug[vm.name] = vm.content` so that you could inspect the data more easily.
@@ -28,15 +35,15 @@ Or if you want a `<pre>` instead of a `<button>`:
 <az-debug name="users" content="vm.users" show-pre="true"></az-debug>
 ```
 
-#### Visibility
+### Visibility
 `azDebug` is only visible when `azDebugVm.debugModeContainer.debugMode` is true. You can use `<az-debug-toggle></az-debug-toggle>` to toggle that property, and thus `azDebug`'s visibility. Alternatively, if you want direct control, you can set `AzDebugModeService.debugModeContainer.debugMode`.
 
 Note: `azDebug` uses `ngShow`, not `ngIf`. This means that even if it's not visible, the DOM element exists, it just has `display: none;`. So if you're doing tech support for someone who isn't authorized to toggle debug mode, you can still use the dev tools to set `display: block;` and see the debug info.
 
-### DialogService
+## DialogService
 Requires `az.alerts`.
 
-#### `.dialog`
+### `.dialog`
 ```
 AzDialogService
   .dialog({
@@ -54,7 +61,7 @@ AzDialogService
 ;
 ```
 
-#### `.confirm`
+### `.confirm`
 ```
 AzDialogService
   .confirm({
@@ -74,7 +81,7 @@ AzDialogService
 ;
 ```
 
-#### `.remind`
+### `.remind`
 Example:
 ```
 AzDialogService
@@ -96,8 +103,8 @@ AzDialogService
 
 Make sure you have `<az-alerts></az-alerts>` when `reminderType` is `alertMessage`, otherwise the alert message won't appear.
 
-### Navbar
-#### Single level navbar example:
+## Navbar
+### Single level navbar example:
 View:
 ```
 <az-navbar
@@ -126,7 +133,7 @@ vm.primaryNavItems = [
 ```
 
 
-#### Two level navbar example:
+### Two level navbar example:
 View:
 ```
 <az-navbar
@@ -196,8 +203,8 @@ vm.secondaryNavItemsHash = {
   ],
 };
 ```
-#### href vs. state
-##### href
+### href vs. state
+#### href
 ```
 {
   text: 'test',
@@ -209,7 +216,7 @@ Leads to:
 <a href="link.html">test</a>
 ```
 
-##### state
+#### state
 ```
 {
   text: 'test',
@@ -221,10 +228,10 @@ Leads to:
 <a ui-sref="foo">test</a>
 ```
 
-#### CSS
+### CSS
 This directive just sets up the markup. You'll have to style it with CSS. Feel free to mess with the markup.
 
-#### Bootstrap
+### Bootstrap
 To make this a bootstrap navbar, pass `bootstrap="true"` to the directive and make sure you have bootstrap installed.
 ```
 <az-navbar
@@ -245,7 +252,7 @@ Or if you want a two-leveled bootstrap navbar:
 
 Here are some things that work out of the box when you're using bootstrap. If you're not using bootstrap, it'll still add the appropriate classes, but you'll have to apply your own styling to the classes.
 
-##### Fixed
+#### Fixed
 To fix the navbar to the top of the screen (so it stays still while you scroll), pass `fixed="true"` to the directive.
 ```
 <az-navbar
@@ -261,7 +268,7 @@ Fixed works for both one and two-leveled navbars.
 
 [Bootstrap docs for fixed](http://getbootstrap.com/components/#navbar-fixed-top)
 
-##### Brand
+#### Brand
 ```
 {
   brand: true,
@@ -275,7 +282,7 @@ Applies a class of `navbar-brand` to the appropriate `<li>`.
 
 [Bootstrap docs for brand](http://getbootstrap.com/components/#navbar-brand-image)
 
-##### Plain text (no link)
+#### Plain text (no link)
 ```
 {
   text: 'Signed in',
@@ -283,7 +290,7 @@ Applies a class of `navbar-brand` to the appropriate `<li>`.
 ```
 [Bootstrap docs for text](http://getbootstrap.com/components/#navbar-text)
 
-##### Right-aligned
+#### Right-aligned
 ```
 vm.primaryNavItems = [ ... ];
 vm.primaryNavItems.right = [
@@ -299,12 +306,12 @@ vm.primaryNavItems.right = [
 
 [Bootstrap docs for right alignment](http://getbootstrap.com/components/#navbar-component-alignment)
 
-#### Active
+### Active
 `AzActiveNavService` keeps track of the primary and/or secondary nav that is active. The directive is data-bound to the service, so set `AzActiveNavService.activeNavs.primary` or `AzActiveNavService.activeNavs.secondary`.
 
 The place to set it is probably in the run block when the route changes (code will be different depending on whether you're using UI Router or ngRoute). Be sure to handle the situation where the user refreshes the page.
 
-### Alerts
+## Alerts
 Adding a single alert:
 ```
 AzAlertService.addAlert(text, type);
@@ -316,15 +323,15 @@ Adding multiple alerts:
 AzAlertService.addAlerts(alerts);
 ```
 
-#### No duplicate alerts
+### No duplicate alerts
 If you call `.addAlert` with an alert that already is visible, there won't be duplicate alerts, and you will see a `console.info` letting you know about the unsuccessful attempt to add the alert.
 
-### Authorization
+## Authorization
 Require that the logged in user has certain permissions in order to access a particular route.
 
 Checks against `$rootScope.loggedInUser.permissions`.
 
-#### UI Router
+### UI Router
 ```
 .state('one', {
   url: '/one',
@@ -333,7 +340,7 @@ Checks against `$rootScope.loggedInUser.permissions`.
 })
 ```
 
-#### ngRoute
+### ngRoute
 ```
 .when('/one', {
   template: 'one',
@@ -341,7 +348,7 @@ Checks against `$rootScope.loggedInUser.permissions`.
 })
 ```
 
-#### Only showing certain things in a view to authorized users
+### Only showing certain things in a view to authorized users
 You can use `$rootScope.isAuthorized` like so:
 ```
 <p ng-if="isAuthorized(['foo'])">secret</p>
@@ -351,11 +358,11 @@ Note: if you use `ngShow`, even if a user is unauthorized, if they're smart, the
 
 # Other people's code
 
-### Generic HTTP Handling
+## Generic HTTP Handling
 http://www.codelord.net/2014/06/25/generic-error-handling-in-angularjs/
 
-### Pagination
+## Pagination
 http://www.michaelbromley.co.uk/blog/108/paginate-almost-anything-in-angularjs
 
-### Angular UI
+## Angular UI
 https://angular-ui.github.io/
