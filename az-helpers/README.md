@@ -313,3 +313,33 @@ AzAlertService.addAlerts(alerts);
 
 #### No duplicate alerts
 If you call `.addAlert` with an alert that already is visible, there won't be duplicate alerts, and you will see a `console.info` letting you know about the unsuccessful attempt to add the alert.
+
+### Authorization
+Require that the logged in user has certain permissions in order to access a particular route.
+
+Checks against `$rootScope.loggedInUser.permissions`.
+
+#### UI Router
+```
+.state('one', {
+  url: '/one',
+  template: 'one',
+  authRequirements: ['admin'],
+})
+```
+
+#### ngRoute
+```
+.when('/one', {
+  template: 'one',
+  authRequirements: ['author', 'admin'],
+})
+```
+
+#### Only showing certain things in a view to authorized users
+You can use `$rootScope.isAuthorized` like so:
+```
+<p ng-if="isAuthorized(['foo'])">secret</p>
+```
+
+Note: if you use `ngShow`, even if a user is unauthorized, if they're smart, they could use the dev tools to set `display: block;` and see what was previously hidden. If you use `ngIf`, the DOM node will never have been created.

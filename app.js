@@ -1,3 +1,3 @@
 angular
-  .module('demo', ['ui.router', 'ui.bootstrap', 'az.helpers'])
+  .module('demo', ['ui.router', 'ui.bootstrap', 'ngRoute', 'az.helpers'])
 ;

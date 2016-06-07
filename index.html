@@ -7,6 +7,7 @@
     <!-- external -->
     <script src="external/angular.js"></script>
     <script src="external/angular-ui-router.js"></script>
+    <script src="external/angular-route.js"></script>
     <script src="external/jquery.min.js"></script>
       <!-- uiBootstrap -->
       <script src="external/uiBootstrap/ui-bootstrap.js"></script>
@@ -50,8 +51,17 @@
       <script src="az-helpers/navbar/navbar.directive.js"></script>
       <script src="az-helpers/navbar/AzActiveNavItemsService.js"></script>
       <link rel="stylesheet" href="az-helpers/navbar/navbar.directive.css">
+
+      <!-- authorization -->
+      <script src="az-helpers/authorization/authorization.js"></script>
   </head>
   <body>
+    <ul>
+      <li><a ui-sref="home">home</a></li>
+      <li><a ui-sref="one">one</a></li>
+      <li><a ui-sref="two">two</a></li>
+    </ul>
+
     <div ui-view></div>
   </body>
 </html>
