@@ -348,3 +348,14 @@ You can use `$rootScope.isAuthorized` like so:
 ```
 
 Note: if you use `ngShow`, even if a user is unauthorized, if they're smart, they could use the dev tools to set `display: block;` and see what was previously hidden. If you use `ngIf`, the DOM node will never have been created.
+
+# Other people's code
+
+### Generic HTTP Handling
+http://www.codelord.net/2014/06/25/generic-error-handling-in-angularjs/
+
+### Pagination
+http://www.michaelbromley.co.uk/blog/108/paginate-almost-anything-in-angularjs
+
+### Angular UI
+https://angular-ui.github.io/
