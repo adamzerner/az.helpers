@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('az.authorization', [])
+    .module('az.authorization')
     .run(azAuthorization)
   ;
 

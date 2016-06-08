@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('az.navbar', [])
+    .module('az.navbar')
     .directive('azNavbar', azNavbar)
     .controller('AzNavbarCtrl', AzNavbarCtrl)
   ;

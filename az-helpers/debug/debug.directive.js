@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('az.debug', [])
+    .module('az.debug')
     .directive('azDebug', azDebug)
   ;
 

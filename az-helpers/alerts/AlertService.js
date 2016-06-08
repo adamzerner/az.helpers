@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('az.alerts', [])
+    .module('az.alerts')
     .service('AzAlertService', AzAlertService)
   ;
 

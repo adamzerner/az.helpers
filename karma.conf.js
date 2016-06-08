@@ -10,7 +10,11 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '*.spec.js',
+      'external/angular.js',
+      'external/jquery.min.js',
+      'external/**/*.js',
+      'az-helpers/app.js',
+      'az-helpers/**/*.js',
     ],
 
     // list of files to exclude
@@ -28,7 +32,7 @@ module.exports = function (config) {
     reporters: ['progress'],
 
     // web server port
-    port: 8000,
+    port: 9000,
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
@@ -42,7 +46,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: [],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

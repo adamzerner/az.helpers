@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('az.dialogs', ['ngDialog', 'az.alerts'])
+    .module('az.dialogs')
     .service('AzDialogService', AzDialogService)
   ;
 

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('az.disableDoubleSubmit', [])
+    .module('az.disableDoubleSubmit')
     .directive('azDisableDoubleSubmit', azDisableDoubleSubmit)
   ;
 

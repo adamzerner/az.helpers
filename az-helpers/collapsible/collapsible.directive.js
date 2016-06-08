@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('az.collapsible', [])
+    .module('az.collapsible')
     .directive('azCollapsible', azCollapsible)
     .controller('CollapsibleCtrl', CollapsibleCtrl)
   ;
