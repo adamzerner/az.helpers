@@ -59,37 +59,13 @@
       <script src="az-helpers/disableDoubleSubmit/disableDoubleSubmit.directive.js"></script>
   </head>
   <body>
-    <style>
-      body.disable-double-submit { /* necessary to override everything */
-        cursor: wait !important;
-      }
-
-      button.disable-double-submit {
-        opacity: .7;
-      }
-
-      .lightbox {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9001;
-      }
-
-      .lightbox.lightbox-enabled {
-        display: block;
-      }
-    </style>
-
-    <div class='lightbox'></div>
-
-    <ul>
+    <!-- <ul>
       <li><a ui-sref="home">home</a></li>
       <li><a ui-sref="one">one</a></li>
       <li><a ui-sref="two">two</a></li>
-    </ul>
+    </ul> -->
+
+    <az-alerts></az-alerts>
 
     <div ui-view></div>
   </body>

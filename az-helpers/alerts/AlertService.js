@@ -43,6 +43,19 @@
       });
     };
 
+    service.closeAlert = function (alertToRemove) {
+      var currentAlert;
+
+      for (var i = 0, len = service.alerts.length; i < len; i++) {
+        currentAlert = service.alerts[i];
+
+        if (angular.equals(currentAlert, alertToRemove)) {
+          service.alerts.splice(i, 1);
+          break;
+        }
+      }
+    };
+
     return service;
   }
 })();

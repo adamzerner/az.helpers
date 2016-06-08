@@ -6,14 +6,15 @@
     .controller('HomeCtrl', AzHomeCtrl)
   ;
 
-  function AzHomeCtrl($timeout) {
+  function AzHomeCtrl(AzAlertService) {
     var vm = this;
 
-    vm.foo = function () {
-      console.log('in vm.foo');
-      return $timeout(function () {
-        console.log('in vm.foo timeout');
-      }, 2000);
+    vm.alertHelloWorld = function () {
+      AzAlertService.addAlert('Hello world', 'info');
+    };
+
+    vm.alertFooBar = function () {
+      AzAlertService.addAlert('Foo bar', 'warning');
     };
   }
 })();

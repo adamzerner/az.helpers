@@ -1,17 +1,2 @@
-<button
-  az-disable-double-submit
-  button-text-while-disabled="Submitting..."
-  on-click="vm.foo()"
->
-  Regular Button
-</button>
-
-<hr />
-
-<form
-  az-disable-double-submit
-  button-text-while-disabled="Submitting..."
-  on-submit="vm.foo()"
->
-  <button type="submit">Submit Button</button>
-</form>
+<button ng-click="vm.alertHelloWorld()">Alert "Hello world"</button>
+<button ng-click="vm.alertFooBar()">Alert "Foo bar"</button>

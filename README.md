@@ -316,8 +316,13 @@ The place to set it is probably in the run block when the route changes (code wi
 Adding a single alert:
 ```
 AzAlertService.addAlert(text, type);
+// `type` is the class that gets added.
 ```
-`type` is the class that gets added.
+```
+<body>
+  <az-alerts></az-alerts>
+  ...
+```
 
 Adding multiple alerts:
 ```

@@ -15,8 +15,12 @@
         var vm = this;
 
         vm.alerts = AzAlertService.alerts;
+
+        vm.closeAlert = function (alert) {
+          AzAlertService.closeAlert(alert);
+        };
       },
-      controllerAs: 'alertVm',
+      controllerAs: 'vm',
     };
   }
 })();
