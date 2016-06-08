@@ -3,10 +3,10 @@
 
   angular
     .module('demo')
-    .controller('HomeCtrl', AzHomeCtrl)
+    .controller('DemoCtrl', AzDemoCtrl)
   ;
 
-  function AzHomeCtrl(AzAlertService) {
+  function AzDemoCtrl(AzAlertService) {
     var vm = this;
 
     vm.alertHelloWorld = function () {

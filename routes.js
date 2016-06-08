@@ -11,10 +11,10 @@
     $locationProvider.html5Mode(true);
 
     $stateProvider
-      .state('home', {
+      .state('demo', {
         url: '/',
-        templateUrl: '/home/home.html',
-        controller: 'HomeCtrl as vm',
+        templateUrl: '/demo/demo.html',
+        controller: 'DemoCtrl as vm',
       })
       .state('one', {
         url: '/one',
@@ -28,8 +28,8 @@
     ;
 
     // $routeProvider
-    //   .when('/home', {
-    //     template: 'home',
+    //   .when('/demo', {
+    //     template: 'demo',
     //   })
     //   .when('/one', {
     //     template: 'one',
