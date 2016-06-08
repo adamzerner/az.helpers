@@ -11,6 +11,10 @@
 9. [Pagination](https://github.com/adamzerner/az.helpers#pagination)
 
 ## Collapsible
+![](https://cloud.githubusercontent.com/assets/3144254/15882672/15e5b562-2d0f-11e6-9ff6-94338cf22b90.gif)
+
+[Plunker Demo](http://plnkr.co/edit/DQ3M7IEm6Sots9bDiMQI?p=preview)
+
 To use:
 ```
 <ol az-collapsible>
@@ -27,6 +31,10 @@ Displays a button that you could click to `console.log` data that you're interes
 
 In addition to `console.logging`, it will also assign `window.azDebug[vm.name] = vm.content` so that you could inspect the data more easily.
 
+![](https://cloud.githubusercontent.com/assets/3144254/15882942/dbc21724-2d11-11e6-8d0e-6bba543641b4.gif)
+
+[Plunker Demo](http://plnkr.co/edit/73CWjtNkIvAYRxsGXuXB?p=info)
+
 To use:
 ```
 <az-debug name="users" content="vm.users"></az-debug>
@@ -42,7 +50,11 @@ Or if you want a `<pre>` instead of a `<button>`:
 Note: `azDebug` uses `ngShow`, not `ngIf`. This means that even if it's not visible, the DOM element exists, it just has `display: none;`. So if you're doing tech support for someone who isn't authorized to toggle debug mode, you can still use the dev tools to set `display: block;` and see the debug info.
 
 ## DialogService
-Requires `az.alerts`.
+Requires `az.alerts` and `ngDialog`.
+
+![](https://cloud.githubusercontent.com/assets/3144254/15893910/ad15083e-2d50-11e6-854b-4f112d726fc1.gif)
+
+[Plunker Demo](http://plnkr.co/edit/X8aEfVzUOeYdLFu39EC1?p=preview)
 
 ### `.dialog`
 ```
@@ -105,6 +117,11 @@ AzDialogService
 Make sure you have `<az-alerts></az-alerts>` when `reminderType` is `alertMessage`, otherwise the alert message won't appear.
 
 ## Navbar
+
+![](https://cloud.githubusercontent.com/assets/3144254/15894377/9f5c96c8-2d53-11e6-8407-63315e6f0b9c.png)
+
+[Plunker Demo](http://plnkr.co/edit/DL2l3mOk4EQlvVThX6Vs?p=preview)
+
 ### Single level navbar example:
 View:
 ```
@@ -313,6 +330,10 @@ vm.primaryNavItems.right = [
 The place to set it is probably in the run block when the route changes (code will be different depending on whether you're using UI Router or ngRoute). Be sure to handle the situation where the user refreshes the page.
 
 ## Alerts
+![](https://cloud.githubusercontent.com/assets/3144254/15881415/c922e9bc-2d03-11e6-80ce-fd11898a1b33.gif)
+
+[Plunker Demo](http://plnkr.co/edit/9r1IRpuCZnY5arBsOlPx?p=preview)
+
 Adding a single alert:
 ```
 AzAlertService.addAlert(text, type);
@@ -336,6 +357,10 @@ If you call `.addAlert` with an alert that already is visible, there won't be du
 Require that the logged in user has certain permissions in order to access a particular route.
 
 Checks against `$rootScope.loggedInUser.permissions`.
+
+![](https://cloud.githubusercontent.com/assets/3144254/15882536/8b289f08-2d0d-11e6-8fac-77b9256dec57.gif)
+
+[Plunker Demo](http://plnkr.co/edit/YpvBmkv6aMLCR4QMFul3?p=preview)
 
 ### UI Router
 ```
@@ -369,9 +394,9 @@ This directive gives the user visual feedback that the button has indeed been cl
 
 Inspired by Rails' [data-disable-with](http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html).
 
-[Plunker](http://plnkr.co/edit/K7JBmk3Bo4OttAJpRxc0?p=preview)
-
 ![](https://cloud.githubusercontent.com/assets/3144254/15881100/5e69842a-2d01-11e6-98fa-274a6e85c5db.gif)
+
+[Plunker Demo](http://plnkr.co/edit/K7JBmk3Bo4OttAJpRxc0?p=preview)
 
 ### Normal use
 ```

@@ -14,7 +14,7 @@
       .state('demo', {
         url: '/',
         templateUrl: '/demo/demo.html',
-        controller: 'DemoCtrl as vm',
+        controller: 'DemoCtrl as demoVm',
       })
       .state('one', {
         url: '/one',

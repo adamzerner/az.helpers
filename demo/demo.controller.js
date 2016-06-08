@@ -6,15 +6,24 @@
     .controller('DemoCtrl', AzDemoCtrl)
   ;
 
-  function AzDemoCtrl(AzAlertService) {
+  function AzDemoCtrl(AzDialogService) {
     var vm = this;
 
-    vm.alertHelloWorld = function () {
-      AzAlertService.addAlert('Hello world', 'info');
-    };
-
-    vm.alertFooBar = function () {
-      AzAlertService.addAlert('Foo bar', 'warning');
-    };
+    vm.primaryNavItems = [
+      {
+        text: 'one',
+        href: 'one',
+      }, {
+        text: 'two',
+        href: 'two',
+      }, {
+        icon: 'icon.png',
+        href: 'three',
+      }, {
+        text: 'four',
+        icon: 'four.png',
+        href: 'four',
+      },
+    ];
   }
 })();

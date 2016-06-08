@@ -35,7 +35,7 @@
         callback = function () {
           return self.dialog({
             title: options.title,
-            body: options.title,
+            body: options.body,
           });
         };
       } else if (options.reminderType === 'confirm') {
