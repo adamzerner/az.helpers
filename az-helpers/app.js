@@ -6,5 +6,6 @@ angular
     'az.alerts',
     'az.navbar',
     'az.authorization',
+    'az.disableDoubleSubmit',
   ])
 ;

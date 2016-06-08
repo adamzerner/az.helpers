@@ -1,1 +1,17 @@
-<p>home</p>
+<button
+  az-disable-double-submit
+  button-text-while-disabled="Submitting..."
+  on-click="vm.foo()"
+>
+  Regular Button
+</button>
+
+<hr />
+
+<form
+  az-disable-double-submit
+  button-text-while-disabled="Submitting..."
+  on-submit="vm.foo()"
+>
+  <button type="submit">Submit Button</button>
+</form>

@@ -6,8 +6,9 @@
 4. [Navbar](https://github.com/adamzerner/az.helpers#navbar)
 5. [Alerts](https://github.com/adamzerner/az.helpers#alerts)
 6. [Authorization](https://github.com/adamzerner/az.helpers#authorization)
-7. [Generic HTTP Handling](https://github.com/adamzerner/az.helpers#generic-http-handling)
-8. [Pagination](https://github.com/adamzerner/az.helpers#pagination)
+7. [Disable Double Submit](https://github.com/adamzerner/az.helpers#disable-double-submit)
+8. [Generic HTTP Handling](https://github.com/adamzerner/az.helpers#generic-http-handling)
+9. [Pagination](https://github.com/adamzerner/az.helpers#pagination)
 
 ## Collapsible
 To use:
@@ -355,6 +356,100 @@ You can use `$rootScope.isAuthorized` like so:
 ```
 
 Note: if you use `ngShow`, even if a user is unauthorized, if they're smart, they could use the dev tools to set `display: block;` and see what was previously hidden. If you use `ngIf`, the DOM node will never have been created.
+
+## Disable double submit
+Sometimes you click a button and the request takes a really long time. Users often think, "Is something wrong? I clicked the button didn't I? I'm going to click it again just to be sure.".
+
+This directive gives the user visual feedback that the button has indeed been clicked, and it prevents the user from clicking the button a second time.
+
+Inspired by Rails' [data-disable-with](http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html).
+
+[Plunker](http://plnkr.co/edit/K7JBmk3Bo4OttAJpRxc0?p=preview)
+
+![](https://cloud.githubusercontent.com/assets/3144254/15881100/5e69842a-2d01-11e6-98fa-274a6e85c5db.gif)
+
+### Normal use
+```
+<button
+  az-disable-double-submit
+  on-click="vm.foo()"
+>
+  Regular Button
+</button>
+```
+
+### On a form element
+```
+<form
+  az-disable-double-submit
+  on-submit="vm.foo()"
+>
+  <button type="submit">Submit Button</button>
+</form>
+```
+
+### How it works
+It disables the button when it's clicked, and re-enables it when the promise that `on-click/submit` returns resolves.
+
+It also toggles a `disable-double-submit` class on the body and on the button. You can use this class to style the button and body while the button is disabled.
+
+For example:
+```
+body.disable-double-submit {
+  cursor: wait !important;
+}
+
+button.disable-double-submit {
+  opacity: .7;
+}
+```
+
+The `on-click/submit` function should return a promise. If it doesn't, then the re-enabling will happen almost instantaneously, and the directive will effectively not have done anything.
+
+### Change the text of the button while it's disabled:
+```
+<button
+  az-disable-double-submit
+  button-text-while-disabled="Submitting..."
+  on-click="vm.foo()"
+>
+  Regular Button
+</button>
+```
+
+### Disable everything else on the page while the button is disabled:
+```
+<button
+  az-disable-double-submit
+  on-click="vm.foo()"
+  disable-everything-on-page="true"
+>
+  Regular Button
+</button>
+```
+```
+<body>
+    <div class="lightbox"></div>
+    ...
+```
+```
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9001;
+}
+
+.lightbox.lightbox-enabled {
+  display: block;
+}
+```
+
+When the button is disabled, `.lightbox` has the `lightbox-enabled` class added to it. You can use this class to set `display: block;`, which effectively hides everything underneath it. See [StackOveflow](http://stackoverflow.com/questions/1298034/disable-all-the-elements-in-html). It also toggles a `disable-everything-on-page` class on the body that you could use to style other elements.
+
 
 # Other people's code
 

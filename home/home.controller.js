@@ -6,7 +6,14 @@
     .controller('HomeCtrl', AzHomeCtrl)
   ;
 
-  function AzHomeCtrl(AzDialogService) {
+  function AzHomeCtrl($timeout) {
     var vm = this;
+
+    vm.foo = function () {
+      console.log('in vm.foo');
+      return $timeout(function () {
+        console.log('in vm.foo timeout');
+      }, 2000);
+    };
   }
 })();
