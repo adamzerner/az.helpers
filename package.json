@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/adamzerner/az.helpers#readme",
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^1.8.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",

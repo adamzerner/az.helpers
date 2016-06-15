@@ -10,6 +10,15 @@
 8. [Generic HTTP Handling](https://github.com/adamzerner/az.helpers#generic-http-handling)
 9. [Pagination](https://github.com/adamzerner/az.helpers#pagination)
 
+To use all AZ Helpers:
+- Copy + paste `dist/az.helpers.js` and `dist/az.helpers.css` into your project.
+- Make sure you have an `ngDialog` script (DialogService requires it).
+- `angular.module('yourModule', ['az.helpers'])`.
+
+To use an individual module:
+- Copy + paste the relevant code into your project.
+- `angular.module('yourModule', ['az.individualModule'])`.
+
 ## Collapsible
 ![](https://cloud.githubusercontent.com/assets/3144254/15882672/15e5b562-2d0f-11e6-9ff6-94338cf22b90.gif)
 
